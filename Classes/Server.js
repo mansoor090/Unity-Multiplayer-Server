@@ -39,7 +39,7 @@ module.exports = class Server{
         let player = connection.player;
         let lobbys = server.lobbys;
 
-        console.log(" Added New Player" + connection.player.displayPlayerInformation());
+        console.log("Added Player" + connection.player.displayPlayerInformation() + "in server active players list");
         server.connections[player.id] = connection;
 
         socket.join(player.lobby);
@@ -54,14 +54,10 @@ module.exports = class Server{
         let id = connection.player.id;
 
         delete server.connections[id];
-
-        console.log('Player' + connection.player.displayPlayerInformation() + ' has disconnected');
-
         connection.socket.broadcast.to(connection.player.lobby).emit('disconnected', {id: id});
         // perform lobby cleanup;
         server.lobbys[connection.player.lobby].OnLeaveLobby(connection);
-
-        // console.log("server" + connection.player.lobby.id + " has players " + connection.player.lobby.connection.length);
+        console.log('Player' + connection.player.displayPlayerInformation() + ' has disconnected from server');
     }
 
     OnAttemptToJoinGame(connection = Connection){
@@ -77,7 +73,7 @@ module.exports = class Server{
             return item instanceof GameLobby;
         })
 
-        console.log('Found (' + gameLobbies.length + ") lobbies on the server")
+        console.log('Total game lobbies running on server (' + gameLobbies.length + ")")
 
         gameLobbies.forEach(lobby => {
             if(!lobbyFound){
@@ -93,8 +89,8 @@ module.exports = class Server{
         // All Games Lobbies Full or we have never created one;
 
         if(!lobbyFound){
-            console.log('Making a new game lobby');
-            let  gameLobby = new GameLobby(gameLobbies.length + 1, new GameLobbySettings("FFA", 2));
+            console.log('No Existing Lobby Found thus, Making a new game lobby');
+            let  gameLobby = new GameLobby(gameLobbies.length + 1, new GameLobbySettings("FFA", 3));
             server.lobbys.push(gameLobby);
             server.OnSwitchLobby(connection, gameLobby.id);
         }

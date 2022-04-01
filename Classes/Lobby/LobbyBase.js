@@ -23,6 +23,7 @@ module.exports = class LobbyBase{
         player.lobby = lobby.id;
         connection.lobby = lobby;
 
+        console.log("Lobby ID: " + lobby.id + " has now " + lobby.connections.length+ " players" );
     }
 
     OnLeaveLobby(connection = Connection){
@@ -39,7 +40,7 @@ module.exports = class LobbyBase{
             lobby.connections.splice(index, 1);
         }
 
-        console.log(lobby.id + " has players " + lobby.connections.length);
+        console.log("Lobby ID: " + lobby.id + " has now " + lobby.connections.length+ " players" );
 
 
     }
