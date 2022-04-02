@@ -4,7 +4,7 @@
   "description": "my first game server",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Mansoor",
   "license": "ISC",
