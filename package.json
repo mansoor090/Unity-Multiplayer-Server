@@ -13,5 +13,17 @@
     "nodemon": "^2.0.15",
     "shortid": "^2.2.16",
     "socket.io": "2.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mansoor090/Unity-Multiplayer-Server.git"
+  },
+  "keywords": [
+    "gameserver"
+  ],
+  "bugs": {
+    "url": "https://github.com/mansoor090/Unity-Multiplayer-Server/issues"
+  },
+  "homepage": "https://github.com/mansoor090/Unity-Multiplayer-Server#readme"
 }
