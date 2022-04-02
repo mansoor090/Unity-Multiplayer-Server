@@ -56,8 +56,9 @@ module.exports = class Connection{
             player.rotation.y = data.rotation.y;
             player.rotation.z = data.rotation.z;
 
+            console.log("player id: " + player.id + " is at position = " + player.position.x + "-" + player.position.y + "-" + player.position.z + "-");
             // Sharing Position With Others Thru Server
-            socket.broadcast.to(connection.lobby.id).emit('updatePosition', player);
+         //   socket.broadcast.to(connection.lobby.id).emit('updatePosition', player);
 
         });
 

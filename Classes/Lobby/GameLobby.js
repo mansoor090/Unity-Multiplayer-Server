@@ -17,6 +17,11 @@ module.exports = class GameLobby extends LobbyBase {
         lobby.updateDeadPlayers();
     }
 
+    OnPhysicsUpdate() {
+        let lobby = this;
+        lobby.updatePlayers();
+    }
+
     canEnterLobby(connection = Connection) {
         let lobby = this;
         let maxPlayersCount = lobby.settings.maxPlayers;
@@ -45,6 +50,21 @@ module.exports = class GameLobby extends LobbyBase {
         let lobby = this;
         super.OnLeaveLobby(connection);
         lobby.removePlayer(connection);
+    }
+
+    updatePlayers(){
+
+        let lobby = this;
+        let connections = lobby.connections;
+
+        connections.forEach(c => {
+
+            let socket = c.socket;
+
+            socket.broadcast.to(lobby.id).emit('updatePosition', c.player);
+
+        })
+
     }
 
     updateBullets() {
@@ -128,7 +148,7 @@ module.exports = class GameLobby extends LobbyBase {
         // tell myself about all players
         connections.forEach(c => {
             if (c.player.id !== connection.player.id) {
-                socket.emit('spawn', {id: c.player.id});
+                socket.emit('spawn', {id: c.player.id, position: c.player.position, rotation: c.player.rotation});
             }
         })
     }

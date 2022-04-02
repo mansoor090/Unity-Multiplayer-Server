@@ -12,6 +12,10 @@ module.exports = class LobbyBase{
 
     }
 
+    OnPhysicsUpdate(){
+
+    }
+
     OnEnterLobby(connection = Connection){
         let lobby = this;
         let player = connection.player;

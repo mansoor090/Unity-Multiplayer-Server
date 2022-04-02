@@ -15,6 +15,10 @@ setInterval(() => {
 
 }, 100, 0);
 
+setInterval( () => {
+    server.OnPhysicsUpdate();
+}, server.physicsTickRate * 100, 0)
+
 
 io.on('connection', function (socket){
 

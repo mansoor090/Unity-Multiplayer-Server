@@ -16,7 +16,9 @@ module.exports = class Server{
         this.lobbys = [];
 
         this.lobbys[0] = new LobbyBase(0);
-
+        // this.physicsTickRate = 20 / 100; //50 hz
+this.physicsTickRate = 16.666666666667 / 100; //60 hz
+//this.physicsTickRate = 33.333333333333 / 100; //30 hz
     }
 
     OnUpdate(){
@@ -25,6 +27,16 @@ module.exports = class Server{
         // update each lobby
         for (let id in server.lobbys){
             server.lobbys[id].OnUpdate();
+        }
+    }
+
+    OnPhysicsUpdate(){
+        let server = this;
+
+        // update each lobby per physics update
+
+        for (let id in server.lobbys){
+            server.lobbys[id].OnPhysicsUpdate();
         }
     }
 
