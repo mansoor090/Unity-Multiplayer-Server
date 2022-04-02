@@ -1,0 +1,23 @@
+{
+  "name": "multiplayerserver-nodejs",
+  "version": "1.0.0",
+  "description": "Multiplayer server for Unity Clients using Node JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mansoor090/Unity-Multiplayer-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mansoor090/Unity-Multiplayer-Server/issues"
+  },
+  "homepage": "https://github.com/mansoor090/Unity-Multiplayer-Server#readme",
+  "dependencies": {
+    "shortid": "^2.2.16",
+    "socket.io": "^2.3.0"
+  }
+}
