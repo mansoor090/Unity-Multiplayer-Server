@@ -15,10 +15,18 @@ setInterval(() => {
 
 }, 100, 0);
 
-setInterval( () => {
-    server.OnPhysicsUpdate();
-}, server.physicsTickRate, 0)
+// setInterval( () => {
+//     server.OnPhysicsUpdate();
+// }, server.physicsTickRate, 0)
 
+
+(function loop(){
+    setTimeout(function() {
+        // Your logic here
+        server.OnPhysicsUpdate();
+        loop();
+    }, server.physicsTickRate);
+})();
 
 io.on('connection', function (socket){
 
